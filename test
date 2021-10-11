@@ -1,0 +1,17 @@
+create-ticket check-wallet-balance
+status 1
+create-ticket change-language
+status 2
+create-ticket others Need more details on transaction #abc
+assign-ticket tom
+resolve-ticket tom Resolved transaction issue #abc
+status 3
+status
+verify-ticket-resolution Harry
+status
+verify-ticket-resolution Harry
+assign-ticket Harry
+verify-ticket-resolution Harry
+status 3
+status
+exit
