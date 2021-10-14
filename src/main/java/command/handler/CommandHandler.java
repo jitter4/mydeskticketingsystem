@@ -23,7 +23,7 @@ public class CommandHandler {
     public void status() {
         System.out.println(this.ticketManager.getTicketSystem().getOpenTicketsCount() + " - OPEN TICKETS");
         System.out.println(this.ticketManager.getTicketSystem().getAssignedTicketsCount() + " - ASSIGNED TICKETS");
-        System.out.println(this.ticketManager.getTicketSystem().getVerifiedTicketsCount() + " - CLOSED TICKETS");
+        System.out.println(this.ticketManager.getVerifiedTicketsCount() + " - CLOSED TICKETS");
         System.out.println(this.ticketManager.getTicketCount() + " - TOTAL TICKETS");
     }
 

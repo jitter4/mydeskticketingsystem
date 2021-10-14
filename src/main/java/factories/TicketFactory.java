@@ -1,6 +1,6 @@
 package factories;
 
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 import models.tickets.TicketType;
 import models.tickets.Ticket;
 import models.tickets.strategies.ChangeLanguageTicketResolutionStartegy;
@@ -17,11 +17,11 @@ public class TicketFactory {
 
     private final Map<TicketType, TicketResolutionStrategy> resolutionStartegies;
 
-    public TicketFactory(TicketSystem ticketSystem) {
+    public TicketFactory(TicketQueueSystem ticketQueueSystem) {
         this.resolutionStartegies = new HashMap<>();
-        this.resolutionStartegies.put(TicketType.CHANGE_LANGUAGE, new ChangeLanguageTicketResolutionStartegy(ticketSystem));
-        this.resolutionStartegies.put(TicketType.CHECK_WALLET_BALANCE, new CheckWalletBalanceTicketResolutionStartegy(ticketSystem));
-        this.resolutionStartegies.put(TicketType.OTHERS, new DefaultResolveTicketStrategy(ticketSystem));
+        this.resolutionStartegies.put(TicketType.CHANGE_LANGUAGE, new ChangeLanguageTicketResolutionStartegy(ticketQueueSystem));
+        this.resolutionStartegies.put(TicketType.CHECK_WALLET_BALANCE, new CheckWalletBalanceTicketResolutionStartegy(ticketQueueSystem));
+        this.resolutionStartegies.put(TicketType.OTHERS, new DefaultResolveTicketStrategy(ticketQueueSystem));
     }
 
     public Ticket create(TicketType type, String description) {

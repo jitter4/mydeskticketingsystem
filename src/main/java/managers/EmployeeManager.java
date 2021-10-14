@@ -1,20 +1,19 @@
 package managers;
 
 import models.employee.Employee;
-import models.employee.strategies.DefaultTicketAssignStrategy;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeManager {
 
-    private final TicketSystem ticketSystem;
+    private final TicketQueueSystem ticketQueueSystem;
 
     private final Map<String, Employee> employees = new HashMap<>();
 
-    public EmployeeManager(TicketSystem ticketSystem) {
-        this.ticketSystem = ticketSystem;
+    public EmployeeManager(TicketQueueSystem ticketQueueSystem) {
+        this.ticketQueueSystem = ticketQueueSystem;
     }
 
     public Employee createOrGet(String name) {

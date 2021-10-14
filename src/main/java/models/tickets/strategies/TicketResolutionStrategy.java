@@ -1,15 +1,14 @@
 package models.tickets.strategies;
 
-import models.employee.Employee;
 import models.tickets.Ticket;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 public abstract class TicketResolutionStrategy {
 
-    protected final TicketSystem ticketSystem;
+    protected final TicketQueueSystem ticketQueueSystem;
 
-    protected TicketResolutionStrategy(TicketSystem ticketSystem) {
-        this.ticketSystem = ticketSystem;
+    protected TicketResolutionStrategy(TicketQueueSystem ticketQueueSystem) {
+        this.ticketQueueSystem = ticketQueueSystem;
     }
 
     public abstract void apply(Ticket ticket);
@@ -17,8 +16,7 @@ public abstract class TicketResolutionStrategy {
     public abstract void resolve(Ticket ticket);
 
     public void verifyResolution(Ticket ticket) {
-        this.ticketSystem.unAssign(ticket);
-        this.ticketSystem.addToVerified(ticket);
+        this.ticketQueueSystem.unAssign(ticket);
     }
 
 

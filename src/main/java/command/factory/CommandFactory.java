@@ -11,7 +11,7 @@ import command.handler.CommandHandler;
 import managers.EmployeeManager;
 import managers.TicketManager;
 import models.employee.strategies.DefaultTicketAssignStrategy;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +22,11 @@ public class CommandFactory {
 
     public CommandFactory() {
         this.commands = new HashMap<>();
-        TicketSystem ticketSystem = new TicketSystem();
-        ticketSystem.setTicketAssignStrategy(new DefaultTicketAssignStrategy(ticketSystem));
+        TicketQueueSystem ticketQueueSystem = new TicketQueueSystem();
+        ticketQueueSystem.setTicketAssignStrategy(new DefaultTicketAssignStrategy(ticketQueueSystem));
         CommandHandler commandHandler = new CommandHandler(
-                new TicketManager(ticketSystem),
-                new EmployeeManager(ticketSystem));
+                new TicketManager(ticketQueueSystem),
+                new EmployeeManager(ticketQueueSystem));
         this.commands.put("create-ticket", new CreateTicketCommand(commandHandler));
         this.commands.put("status", new StatusCommand(commandHandler));
         this.commands.put("assign-ticket", new AssignedTicketCommand(commandHandler));

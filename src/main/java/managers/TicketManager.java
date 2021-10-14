@@ -1,7 +1,7 @@
 package managers;
 
 import factories.TicketFactory;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 import models.tickets.TicketType;
 import models.tickets.Ticket;
 
@@ -9,13 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TicketManager {
-    private Map<Integer, Ticket> tickets = new HashMap<>();
-    private TicketFactory ticketFactory;
-    private final TicketSystem ticketSystem;
+    private final Map<Integer, Ticket> tickets = new HashMap<>();
+    private final TicketFactory ticketFactory;
+    private final TicketQueueSystem ticketQueueSystem;
 
-    public TicketManager(TicketSystem ticketSystem) {
-        this.ticketSystem = ticketSystem;
-        this.ticketFactory = new TicketFactory(ticketSystem);
+    public TicketManager(TicketQueueSystem ticketQueueSystem) {
+        this.ticketQueueSystem = ticketQueueSystem;
+        this.ticketFactory = new TicketFactory(ticketQueueSystem);
     }
 
     public Ticket getTicket(Integer ticketNumber) {
@@ -28,11 +28,16 @@ public class TicketManager {
         return ticket.getNumber();
     }
 
-    public TicketSystem getTicketSystem() {
-        return ticketSystem;
+    public TicketQueueSystem getTicketSystem() {
+        return ticketQueueSystem;
     }
 
     public Integer getTicketCount() {
         return tickets.size();
+    }
+
+    public Integer getVerifiedTicketsCount() {
+        return this.getTicketCount()
+                - (this.ticketQueueSystem.getOpenTicketsCount() + this.ticketQueueSystem.getResolvedTicketsCount());
     }
 }

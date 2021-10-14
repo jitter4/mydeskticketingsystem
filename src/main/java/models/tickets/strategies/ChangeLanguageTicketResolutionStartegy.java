@@ -1,11 +1,11 @@
 package models.tickets.strategies;
 
 import models.tickets.Ticket;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 public class ChangeLanguageTicketResolutionStartegy extends AutoResolveTicketStrategy {
-    public ChangeLanguageTicketResolutionStartegy(TicketSystem ticketSystem) {
-        super(ticketSystem);
+    public ChangeLanguageTicketResolutionStartegy(TicketQueueSystem ticketQueueSystem) {
+        super(ticketQueueSystem);
     }
 
     @Override

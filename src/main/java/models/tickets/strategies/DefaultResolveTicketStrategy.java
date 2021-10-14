@@ -1,16 +1,16 @@
 package models.tickets.strategies;
 
 import models.tickets.Ticket;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 public class DefaultResolveTicketStrategy extends TicketResolutionStrategy {
-    public DefaultResolveTicketStrategy(TicketSystem ticketSystem) {
-        super(ticketSystem);
+    public DefaultResolveTicketStrategy(TicketQueueSystem ticketQueueSystem) {
+        super(ticketQueueSystem);
     }
 
     @Override
     public void apply(Ticket ticket) {
-        this.ticketSystem.addToOpen(ticket);
+        this.ticketQueueSystem.addToOpen(ticket);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class DefaultResolveTicketStrategy extends TicketResolutionStrategy {
 
     @Override
     public void resolve(Ticket ticket) {
-        this.ticketSystem.unAssign(ticket);
-        this.ticketSystem.addToResolved(ticket);
+        this.ticketQueueSystem.unAssign(ticket);
+        this.ticketQueueSystem.addToResolved(ticket);
     }
 }

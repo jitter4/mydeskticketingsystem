@@ -1,11 +1,11 @@
 package models.tickets.strategies;
 
 import models.tickets.Ticket;
-import models.tickets.TicketSystem;
+import models.tickets.TicketQueueSystem;
 
 public class CheckWalletBalanceTicketResolutionStartegy extends AutoResolveTicketStrategy {
-    public CheckWalletBalanceTicketResolutionStartegy(TicketSystem ticketSystem) {
-        super(ticketSystem);
+    public CheckWalletBalanceTicketResolutionStartegy(TicketQueueSystem ticketQueueSystem) {
+        super(ticketQueueSystem);
     }
 
     @Override
